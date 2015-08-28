@@ -38,7 +38,7 @@ bool Solar::draw()
 	Gizmos::addTransform(glm::mat4(1));
 
 	for (int i = 0; i < 9; i++)
-		Gizmos::addSphere(glm::vec3(1, 1, 1), 1, 10, 10, glm::vec4(0,0,0,1), new glm::mat4(1));
+		Gizmos::addSphere(glm::vec3(1 + i, 1, 1), .5f, 10, 10, glm::vec4(0,0,0,1), new glm::mat4(1));
 
 
 	Gizmos::draw(projection * view);
