@@ -18,12 +18,29 @@ bool Solar::draw()
 	const glm::mat4* a_transform = nullptr, float a_longMin = 0.f, float a_longMax = 360,
 	float a_latMin = -90, float a_latMax = 90 );
 
+
+	vec3 center
+	float radius
+	int rows
+	int columns
+	vec4 fillColour
+	const mat4 transform
+	float longMin
+	float longMax
+	float latMin 
+	float latMax
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	Gizmos::clear();
 	Gizmos::addTransform(glm::mat4(1));
 
 	*/
 	Gizmos::addTransform(glm::mat4(1));
+
+	for (int i = 0; i < 9; i++)
+		Gizmos::addSphere(glm::vec3(1, 1, 1), 1, 10, 10, glm::vec4(0,0,0,1), new glm::mat4(1));
+
+
 	Gizmos::draw(projection * view);
 
 	return true;
