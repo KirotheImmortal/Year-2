@@ -9,8 +9,8 @@ bool Solar::make(Solar self)
 
 	for (int i = 0; i < 9; i++)
 	{
-		self.planets->push_back(Planet(static_cast<Planet::name>(i)));
-		self.planets.back().pos = glm::vec3(1 + i, 1, 1);
+		self.planets.push_back(new Planet(static_cast<Planet::name>(i)));
+		self.planets.back()->pos = glm::vec3(1 + i, 1, 1);
 	}
 	return true;
 }
