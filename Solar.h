@@ -1,20 +1,15 @@
 #pragma once
 
 #include "MyApplication.h"
+#include "Planet.h"
 
 class Solar : public Application
 {
-private:
-
-	glm::vec3 pos[9];
-
-
 public:
 	Solar() {}
-
+	bool make(Solar self);
 	bool draw();
-	bool orbit();
-
+	Planet planets[9];
 	~Solar() {}
 
 };

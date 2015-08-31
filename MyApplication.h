@@ -7,6 +7,10 @@
 #include "Gizmos.h"	
 #include <glm\glm.hpp>
 #include <glm\ext.hpp>
+
+#include <math.h>
+
+
 using glm::vec3;
 using glm::vec4;
 using glm::mat4;

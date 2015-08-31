@@ -44,12 +44,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\quinton.baudoin\Desktop\Year-2\dep\include;C:\Users\quinton.baudoin\Desktop\Year-2\dep;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Boys\Desktop\Year-2\dep\include;C:\Users\Boys\Desktop\Year-2\dep;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\quinton.baudoin\Desktop\Year-2\dep\glfw;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Year-2\dep\glfw;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -70,6 +70,7 @@
     <ClCompile Include="downloads\aieutilities-master\aieutilities-master\aie\Gizmos.cpp" />
     <ClCompile Include="downloads\gl_core_4_4.c" />
     <ClCompile Include="MyAppliction.cpp" />
+    <ClCompile Include="Planet.cpp" />
     <ClCompile Include="solar.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
@@ -77,6 +78,7 @@
     <ClInclude Include="dep\include\Gizmos.h" />
     <ClInclude Include="downloads\gl_core_4_4.h" />
     <ClInclude Include="MyApplication.h" />
+    <ClInclude Include="Planet.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Solar.h" />
   </ItemGroup>

@@ -48,7 +48,7 @@ int main()
 
 	Solar* app = new Solar();
 
-	if (app->startup())
+	if (app->startup() && app->make(*app))
 		while (app->update())
 			app->draw();
 
