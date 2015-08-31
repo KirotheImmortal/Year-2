@@ -21,7 +21,7 @@ public:
 	enum name{sun, mer, ven , ear, mar, jup, sat, ura, plu};
 	glm::vec3 pos = glm::vec3(0);
 	float dis;
-	Planet() {}
+	Planet();
 	Planet(name n) { pn = n; }
 
 	bool draw();

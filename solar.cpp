@@ -9,15 +9,15 @@ bool Solar::make(Solar self)
 
 	for (int i = 0; i < 9; i++)
 	{
-		self.planets[i] = Planet(static_cast<Planet::name>(i));
-		self.planets[i].pos = glm::vec3(1 + i, 1, 1);
+		self.planets->push_back(Planet(static_cast<Planet::name>(i)));
+		self.planets.back().pos = glm::vec3(1 + i, 1, 1);
 	}
 	return true;
 }
 
 bool Solar::draw()
 {
-	if (planets == nullptr)
+	if (planets.size() == 0)
 		return false;
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -47,8 +47,8 @@ bool Solar::draw()
 	Gizmos::addTransform(glm::mat4(1));
 	for each (auto p in planets)
 	{
-		p.update(p);
-		p.draw();
+		p->update(*p);
+		p->draw();
 	}
 
 

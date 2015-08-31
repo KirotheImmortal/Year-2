@@ -3,13 +3,16 @@
 #include "MyApplication.h"
 #include "Planet.h"
 
+#include <list>
+
 class Solar : public Application
 {
 public:
+
 	Solar() {}
 	bool make(Solar self);
 	bool draw();
-	Planet planets[9];
+    std::list<Planet*> planets;
 	~Solar() {}
 
 };
