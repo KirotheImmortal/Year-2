@@ -1,5 +1,4 @@
 #pragma once
-#include "Solar.h"
 #include "MyApplication.h"
 #include <list>
 
@@ -21,15 +20,16 @@ public:
 	enum name{sun, mer, ven , ear, mar, jup, sat, ura, plu};
 	glm::vec3 pos = glm::vec3(0);
 	float dis;
-	Planet();
-	Planet(name n) { pn = n; }
-
+	Planet() {}
+	bool setName(name n);
 	bool draw();
-	bool update(Planet p);
-	~Planet();
+	bool update(float dt);
+	~Planet() {}
 private:
-	
+	float angle;
 	name pn;
+	float elaps = .0f;
+	float angleoforbit = 1.0f;
 
 
 

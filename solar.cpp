@@ -1,7 +1,7 @@
 #include "Solar.h"
 #include <iostream>
 
-bool Solar::make(Solar self)
+bool Solar::make()
 {
 	/*	glm::vec3 pos = glm::vec3(0);
 	enum name	{mer, ven, ear, mar, jup, sat, ura, plu};
@@ -9,16 +9,23 @@ bool Solar::make(Solar self)
 
 	for (int i = 0; i < 9; i++)
 	{
-		self.planets.push_back(new Planet(static_cast<Planet::name>(i)));
-		self.planets.back()->pos = glm::vec3(1 + i, 1, 1);
+
+		Planet* plan = new Planet;
+		plan->setName(static_cast<Planet::name>(i));
+		plan->dis = i;
+		plan->pos = glm::vec3(1 + i, 1, 1);
+		planets.push_back(plan);
+
 	}
+	
+	
 	return true;
 }
 
-bool Solar::draw()
+bool Solar::draw(float dt)
 {
-	if (planets.size() == 0)
-		return false;
+	//if (planets.size() == 0)
+	//	return false;
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	Gizmos::clear();
@@ -47,10 +54,11 @@ bool Solar::draw()
 	Gizmos::addTransform(glm::mat4(1));
 	for each (auto p in planets)
 	{
-		p->update(*p);
+		p->update(dt);
 		p->draw();
 	}
-
+//	test->update(test);
+	//test->draw(test);
 
 	Gizmos::draw(projection * view);
 

@@ -1,5 +1,8 @@
 #include "MyApplication.h"
 #include "Solar.h"
+#include <iostream>
+#include <time.h>
+#include <ctime>
 
 int main()
 {
@@ -45,12 +48,21 @@ int main()
 	//// the rest of our code goes here!
 	//glfwDestroyWindow(window);
 	//glfwTerminate();
+	clock_t time;
+	float deltatime = .0f;
+
 
 	Solar* app = new Solar();
 
-	if (app->startup() && app->make(*app))
+	if (app->startup() && app->make())
+	{ 
 		while (app->update())
-			app->draw();
-
+		{ 
+			time = clock();
+				app->draw(deltatime);			
+			deltatime = static_cast<float>(clock() - time);
+			deltatime = deltatime / time;
+		}
+     }
 	return 0;
 }

@@ -10,9 +10,11 @@ class Solar : public Application
 public:
 
 	Solar() {}
-	bool make(Solar self);
-	bool draw();
-    std::list<Planet*> planets;
+	/*: planets(std::list<*>()) */
+	bool make();
+	bool draw(float dt);
+	std::list<Planet*> planets;
+    //std::list<Planet*> planets;
 	~Solar() {}
 
 };
