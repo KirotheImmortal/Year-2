@@ -43,8 +43,8 @@ bool Planet::update(float dt)
 
 	float hyp = sqrt((pos.z*pos.z) + (pos.x*pos.x));
 	float radien = angleoforbit * (3.14 / 180);
-		pos.x = (center.x + dis * sin(radien));
-		pos.z = (center.z + dis * cos(radien));
+		pos.x = (center.x + dis * cos(radien));
+		pos.z = (center.z + dis * sin(radien));
 		/*pos.x += pos.x / hyp * static_cast<float>(pn);
 		pos.z += pos.z / hyp * static_cast<float>(pn);*/
 		elaps = .0f;
