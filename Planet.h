@@ -17,10 +17,10 @@ class Planet : public Entity
 
 
 public:
-	glm::mat4 Model = glm::mat4(1);
+	glm::mat4 Model = glm::mat4(.1f);
 	Entity* parent = NULL;
 	float dis = 5;
-
+	float size = .5;
 	//Manual set Speed to 1 and AutoOrbit to false
 	Planet() {}
 
