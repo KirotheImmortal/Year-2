@@ -4,65 +4,40 @@
 #include <time.h>
 #include <ctime>
 
+#include "tiny_obj_loader.h"
+
 int main()
 {
-	//if (glfwInit() == false)
-	//	return -1;
-	//GLFWwindow * window = glfwCreateWindow(1280, 800, "Computer Graphics", nullptr, nullptr);
-	//if (window == nullptr)
-	//{
-	//	glfwTerminate();
-	//	return -2;
-	//}
-	//glfwMakeContextCurrent(window);
-	//if (ogl_LoadFunctions() == ogl_LOAD_FAILED)
-	//{
-	//	glfwDestroyWindow(window);
-	//	glfwTerminate();
-	//	return -3;
-	//}
-	//auto major = ogl_GetMajorVersion();
-	//auto minor = ogl_GetMinorVersion();
-	//Gizmos::create();
-	//mat4 view = glm::lookAt(vec3(10, 10, 10), vec3(0), vec3(0, 1, 0));
-	//mat4 projection = glm::perspective(glm::pi<float>() * 0.25f, 16 / 9.f, 0.1f, 1000.f);
-	//printf_s("GL: %i.%i\n", major, minor);
-	//glClearColor(0.25f, 0.25f, 0.25f, 1);
-	//glEnable(GL_DEPTH_TEST);
-	//while (glfwWindowShouldClose(window) == false && glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS)
-	//{
-	//	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	//	Gizmos::clear();
-	//	Gizmos::addTransform(glm::mat4(1));
-	//	vec4 white(1);
-	//	vec4 black(0, 0, 0, 1);
-	//	for (int i = 0; i < 21; ++i) {
-	//		Gizmos::addLine(vec3(-10 + i, 0, 10),	vec3(-10 + i, 0, -10),	i == 10 ? white : black);
-	//		Gizmos::addLine(vec3(10, 0, -10 + i),	vec3(-10, 0, -10 + i),	i == 10 ? white : black);
-	//	}
-	//	Gizmos::draw(projection * view);
-	//	glfwSwapBuffers(window);
-	//	glfwPollEvents();
-	//}
-	//Gizmos::destroy();
-	//// the rest of our code goes here!
-	//glfwDestroyWindow(window);
-	//glfwTerminate();
-	clock_t time;
 	float deltatime = .0f;
+	
+	std::vector<tinyobj::shape_t> shapes;
+	std::vector<tinyobj::material_t> materials;
+	/*std::string err = tinyobj::LoadObj(shapes, materials,
+		"./models/stanford/bunny.obj");*/
+	std::string err;
+	tinyobj::LoadObj(shapes, materials, err, "Dragon.obj", "./models/dragon.obj");
 
 
-	Solar* app = new Solar();
 
-	if (app->startup() && app->make())
-	{ 
+	//Instantiates a new Solar wich will be the system of planets
+	Solar* solarsystem = new Solar();
+
+	//Instantiates the Application singleton
+	Application *app = Application::Instantiate();
+
+	if (app->startup())
+	{ solarsystem->make();
 		while (app->update())
 		{ 
-			time = clock();
-				app->draw(deltatime);			
-			deltatime = static_cast<float>(clock() - time);
-			deltatime = deltatime / time;
+				app->draw();	
+				solarsystem->draw(app->GetDeltaTime());
+			
+				
+				
 		}
+		delete app;
+		solarsystem->~Solar();
+		//delete solarsystem;
      }
 	return 0;
 }

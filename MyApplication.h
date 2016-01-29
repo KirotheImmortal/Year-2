@@ -10,28 +10,69 @@
 
 #include <math.h>
 
+#include <time.h>
+
+#include "tiny_obj_loader.h"
 
 using glm::vec3;
 using glm::vec4;
 using glm::mat4;
 
+struct OpenGLInfo
+{
+	unsigned int m_VAO;
+	unsigned int m_VBO;
+	unsigned int m_IBO;
+	unsigned int m_index_count;
+};
 
 class Application
 {
-protected:
-	 GLFWwindow* window;
-	 mat4 view;
-	 mat4 projection;
-	
-public:
+private:
+	GLFWwindow* window;
+	mat4 view;
+	mat4 projection;
+	static Application *s_instance;
+
+	float m_deltaTime, m_totalTime;
 
 	Application();
-	virtual bool startup();
-	virtual bool draw();
-	virtual bool update();
-	virtual bool shutdown();
+public:
+
+	std::vector<OpenGLInfo> m_gl_info;
+	bool startup();
+	bool draw();
+	bool update();
+	bool shutdown();
+	
+	void CreateOpenGLBuffers(std::vector<tinyobj::shape_t>& shapes);
+
+	float GetDeltaTime()
+	{
+		return m_deltaTime;
+	}
+
+	mat4 GetView()
+	{
+		return view;
+	}
+	mat4 GetProjection()
+	{
+		return projection;
+	}
+
+	static Application *Instantiate()
+	{
+
+		if (s_instance == nullptr)
+			s_instance = new Application();
+
+		return s_instance;
+	}
 	~Application();
 
 
 
 };
+
+//soh cah toa

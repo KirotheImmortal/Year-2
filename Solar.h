@@ -4,8 +4,8 @@
 #include "Planet.h"
 
 #include <list>
-
-class Solar : public Application
+#include <iostream>
+class Solar
 {
 public:
 
@@ -15,6 +15,14 @@ public:
 	bool draw(float dt);
 	std::list<Planet*> planets;
     //std::list<Planet*> planets;
-	~Solar() {}
+	~Solar() 
+	{	
+		
+		while (!planets.empty())
+		{
+			delete planets.front();
+			planets.pop_front();
+		}
+	}
 
 };

@@ -1,8 +1,8 @@
 #pragma once
-#include "MyApplication.h"
+#include "Entity.h"
 #include <list>
 
-class Planet : public Application
+class Planet : public Entity
 {
 	/*
 	mercury: 30 mps
@@ -17,20 +17,25 @@ class Planet : public Application
 
 
 public:
-	enum name{sun, mer, ven , ear, mar, jup, sat, ura, plu};
-	glm::vec3 pos = glm::vec3(0);
-	float dis;
+	glm::mat4 Model = glm::mat4(1);
+	Entity* parent = NULL;
+	float dis = 5;
+
+	//Manual set Speed to 1 and AutoOrbit to false
 	Planet() {}
-	bool setName(name n);
-	bool draw();
+
+    bool draw();
 	bool update(float dt);
-	~Planet() {}
+
+	~Planet() { }
+	
+	float m_Angle;
+	bool m_AutoOrbit = true;
+	float m_OrbitSpeed;
+	float m_RotationSpeed;
 private:
-	float angle;
-	name pn;
-	float elaps = .0f;
-	float angleoforbit = 1.0f;
+	float m_AngleofOrbit = 1.0f;
 
-
+	
 
 };
