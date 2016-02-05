@@ -7,30 +7,31 @@ bool Planet::draw()
 {
 	
 	//Gizmos::addSphere(glm::vec3(1, 1, 1), .5f, 10, 10, glm::vec4(0,0,0,1), new glm::mat4(1));
-	Gizmos::addSphere(pos, size, 10, 10, glm::vec4(0, 0, 0, 1), &Model);
+	Gizmos::addSphere(pos, size, 20, 1, glm::vec4(0, 0, 0, 1), &Model);
 
 	return true;
 }
 bool Planet::update(float dt)
 {
-
+	Model = glm::rotate(Model, m_RotationSpeed, glm::vec3(0, 1, 0));
 	/*
 	float two_pi=6.283f;
-
+	
 	float angle_inc=1.0f/radius;
 	for(float angle=0.0f; angle<= two_pi;angle+=angle_inc){
 	xpos=centrex+radius*cos(angle);
 	ypos=centrey+radius*sin(angle);
 	putpixel(x,pos,ypos,surface);
 	*/
-	if (m_AutoOrbit == false || parent == nullptr)
-		return true;
-
-	glm::vec3 center;
-		center = parent->pos; /// Center of the orbit
-
+	if (m_AutoOrbit == false)
+	return true;
 	
-	Model = glm::rotate(Model, -m_RotationSpeed*dt, glm::vec3(0, 1, 0));
+	glm::vec3 center;
+	if(parent!=nullptr)
+		center = parent->pos; /// Center of the orbit
+	else center = glm::vec3(1);
+	
+	
 	pos.x = pos.x - center.x; /// relitive to centre
 	pos.z = pos.z - center.y; /// same as upper statement
 

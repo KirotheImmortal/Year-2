@@ -16,9 +16,10 @@ bool Solar::make()
 
 	Planet* sun = new Planet();
 	sun->m_OrbitSpeed = 0.f;
+	sun->m_RotationSpeed = 50;
 	sun->pos = glm::vec3(0,0,0);
-	sun->size = 1;
-	//sun->m_AutoOrbit = false;
+	sun->size = 1.5f;
+	sun->m_AutoOrbit = false;
 	Planet* mer = new Planet();
 	mer->m_OrbitSpeed = 47.87f;
 	mer->pos = glm::vec3(2,0,0);
